@@ -1,0 +1,59 @@
+/* Center the entire .diversion div using Flexbox */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+}
+
+/* Style the form container */
+.diversion {
+  padding: 20px;
+  background-color: lightgreen;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 300px;
+}
+
+/* Optional: Improve input and button styling */
+form input[type="text"],
+form input[type="submit"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form input[type="submit"] {
+  background-color: darkgreen;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: green;
+}
+form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+form select:focus {
+  border-color: #888;
+  outline: none;
+}
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="diversion">
+            {% if error %}
+                <div class="error" style="color:red;">{{ error }}</div>
+            {% endif %}
+
+        <form method="post" action="/status">
+            <label>Case Type</label><br>
+            <select name="case">
+                {% for i in case %}
+                    <option value="{{ i }}">{{ i }}</option>
+
+                {% endfor %}
+            </select><br><br>
+
+            <label>Case Number</label><br>
+            <input type="text" name="case_numb" ><br><br>
+
+            <label>Filing Year </label>
+            <select name="case_year">
+                  {% for y in year %}
+                    <option value="{{ y }}">{{ y }}</option>
+                  {% endfor %}
+            </select><br><br>
+
+            <input type="submit" value="Search">
+
+        </form>
+    </div>
+<!--{% if result %}-->
+<!--        <h3>Result Table:</h3>-->
+<!--        <div>-->
+<!--            {{ result | safe }}-->
+<!--        </div>-->
+<!--    {% endif %}-->
+
+
+
+</body>
+</html>

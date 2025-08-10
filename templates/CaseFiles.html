@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case Status - {{ case_type }} {{ case_number }}/{{ case_year }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tablecss.css') }}">
+</head>
+<body>
+    {% if result %}
+    <h2>Case Status: {{ case_type }} {{ case_number }}/{{ case_year }}</h2>
+    <div class="back-link">
+    <a href="{{ url_for('index') }}">⬅ Back to Search</a>
+    </div>
+
+
+  <table border="1" cellspacing="0" cellpadding="10">
+    <thead>
+      <tr>
+        <th>Case Title</th>
+        <th>Court Info</th>
+        <th>Order Dates (PDFs)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in result %}
+        <tr>
+          <td>{{ row[2] }}</td>
+          <td>{{ row[3] | fix_date_spacing }}</td>
+          <td>
+            {% if row[4] %}
+              <table border="1" cellspacing="0" cellpadding="5">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>PDF</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for order in row[4] %}
+                    <tr>
+                      <td>{{ order.date }}</td>
+                      <td><a href="{{ order.pdf }}" target="_blank">View PDF</a></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              No orders found.
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <h2 class="back-link" align="center">Wrong Input <br>
+    Please Check Your Input <br>
+    No data found.</h2>
+{% endif %}
+
+</body>
+</html>
